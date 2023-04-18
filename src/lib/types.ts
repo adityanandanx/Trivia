@@ -1,19 +1,32 @@
-enum Difficulty {
-    easy = "easy",
-    medium = "medium",
-    hard = "hard",
+export enum Difficulty {
+    easy = "Easy",
+    medium = "Medium",
+    hard = "Hard",
 }
 
-enum QuestionType {
-    multiple = "multiple",
-    boolean = "boolean",
+export enum QuestionType {
+    multiple = "Multiple",
+    boolean = "True/False",
+    any = "Any",
 }
 
-interface Question {
+export interface Question {
     category: string;
     type: QuestionType;
     difficulty: Difficulty;
     question: string;
     correct_answer: string;
     incorrect_answers: string[];
+}
+
+export interface Category {
+    id: number;
+    name: string;
+}
+
+export interface UserSettings {
+    nofquestions: number;
+    category: Category;
+    type: QuestionType;
+    difficulty: Difficulty;
 }

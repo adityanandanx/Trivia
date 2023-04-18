@@ -11,9 +11,14 @@ const ButtonVariants = cva(
                     "bg-zinc-900 text-zinc-50 dark:bg-zinc-50 dark:text-zinc-900",
                 secondary: "text-zinc-900 dark:text-zinc-50 bg-transparent",
             },
+            brightness: {
+                dim: "opacity-50 hover:opacity-100 transition-opacity",
+                default: "opacity-100",
+            },
         },
         defaultVariants: {
             variant: "primary",
+            brightness: "default",
         },
     }
 );
@@ -28,11 +33,12 @@ const Button: FC<ButtonProps> = ({
     children,
     isLoading = false,
     variant,
+    brightness,
     ...props
 }) => {
     return (
         <button
-            className={cn(ButtonVariants({ variant, className }))}
+            className={cn(ButtonVariants({ variant, brightness, className }))}
             disabled={isLoading}
             {...props}
         >

@@ -3,6 +3,7 @@ import { FC, useEffect, useState } from "react";
 import Option from "./Option";
 import { decode } from "he";
 import { shuffle } from "@/lib/utils";
+import { Question } from "@/lib/types";
 
 interface MCQuestionProps {
     index: number;

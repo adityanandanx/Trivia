@@ -4,6 +4,8 @@ import MCQuestion from "../MCQuestion";
 import Link from "next/link";
 import Button from "../ui/Button";
 import { useRouter } from "next/navigation";
+import { Question, QuestionType } from "@/lib/types";
+import { MdChevronLeft, MdClose } from "react-icons/md";
 
 interface QuestionsProps {
     questions: Question[];
@@ -75,6 +77,19 @@ const Questions: FC<QuestionsProps> = ({ questions, quesIndex = 0 }) => {
     return (
         <ControlsContext.Provider value={controls}>
             <TriviaStateContext.Provider value={triviaState}>
+                <Link href={"/"} className="">
+                    <Button
+                        className="text-3xl p-2 m-3 absolute top-0 right-0"
+                        variant={"secondary"}
+                        brightness={"dim"}
+                        onClick={() => {
+                            router.replace("/");
+                            router.refresh();
+                        }}
+                    >
+                        <MdClose />
+                    </Button>
+                </Link>
                 {!hasEnded ? (
                     <div>
                         <div className="w-full text-lg flex items-center justify-center gap-2">
@@ -83,7 +98,7 @@ const Questions: FC<QuestionsProps> = ({ questions, quesIndex = 0 }) => {
                                 {triviaState.score}/{questions.length}
                             </span>
                         </div>
-                        {currentQues.type === "multiple" ? (
+                        {currentQues.type === QuestionType.multiple ? (
                             <MCQuestion
                                 index={triviaState.quesIndex}
                                 question={currentQues}
@@ -106,7 +121,7 @@ const Questions: FC<QuestionsProps> = ({ questions, quesIndex = 0 }) => {
                                     router.refresh();
                                 }}
                             >
-                                Restart
+                                Back to menu
                             </Button>
                         </Link>
                     </h1>
