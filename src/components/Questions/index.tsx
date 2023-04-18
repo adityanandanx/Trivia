@@ -1,6 +1,6 @@
 "use client";
-import { FC, createContext, useState } from "react";
-import MCQuestion from "../MCQuestion";
+import { FC, createContext, useEffect, useRef, useState } from "react";
+import MCQuestion from "../Question";
 import Link from "next/link";
 import Button from "../ui/Button";
 import { useRouter } from "next/navigation";
@@ -45,7 +45,6 @@ const Questions: FC<QuestionsProps> = ({ questions, quesIndex = 0 }) => {
         wrongs: 0,
         hasEnded: false,
     });
-
     // controls
     const [controls, setControls] = useState<Controls>({
         next: () => {
@@ -57,6 +56,8 @@ const Questions: FC<QuestionsProps> = ({ questions, quesIndex = 0 }) => {
                 }
                 prevState.quesIndex += 1;
                 setCurrentQues(questions[prevState.quesIndex]);
+                // console.log(prevState.quesIndex);
+
                 return prevState;
             });
         },
@@ -98,12 +99,11 @@ const Questions: FC<QuestionsProps> = ({ questions, quesIndex = 0 }) => {
                                 {triviaState.score}/{questions.length}
                             </span>
                         </div>
-                        {currentQues.type === QuestionType.multiple ? (
-                            <MCQuestion
-                                index={triviaState.quesIndex}
-                                question={currentQues}
-                            />
-                        ) : null}
+
+                        <MCQuestion
+                            index={triviaState.quesIndex}
+                            question={questions[triviaState.quesIndex]}
+                        />
                     </div>
                 ) : (
                     <h1 className="flex flex-col items-center justify-center ">

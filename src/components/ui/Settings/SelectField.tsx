@@ -31,8 +31,8 @@ const SelectField: FC<SelectFieldProps> = ({ items, ...props }) => {
                         <MdArrowUpward />
                     </Select.ScrollUpButton>
                     <Select.Viewport>
-                        {items.map((item) => (
-                            <SelectItem value={item.value}>
+                        {items.map((item, i) => (
+                            <SelectItem key={i} value={item.value}>
                                 {item.text}
                             </SelectItem>
                         ))}
