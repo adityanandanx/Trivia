@@ -33,7 +33,7 @@ export async function getQuestions(userSettings: UserSettings) {
     const { category, difficulty, nofquestions, type } = userSettings;
     const u = `https://opentdb.com/api.php?amount=${nofquestions}&type=${type.toLowerCase()}&difficulty=${difficulty.toLowerCase()}}`;
 
-    const res = await fetch("https://opentdb.com/api.php?amount=2", {
+    const res = await fetch("https://opentdb.com/api.php?amount=10", {
         cache: "no-store",
     });
     if (!res.ok) {
