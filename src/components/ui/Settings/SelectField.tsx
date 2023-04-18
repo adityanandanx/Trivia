@@ -67,5 +67,5 @@ const SelectItem: FC<SelectItemProps> = React.forwardRef(
         );
     }
 );
-
+SelectItem.displayName = "SelectItem";
 export default SelectField;
