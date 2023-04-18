@@ -1,24 +1,13 @@
 "use client";
-import { FC, useContext, useEffect, useState } from "react";
+import { FC, useEffect, useState } from "react";
 import Option from "./Option";
-import { ControlsContext } from "../Questions";
-import { createContext } from "react";
 import { decode } from "he";
 import { shuffle } from "@/lib/utils";
-
-// interface QuestionState {
-//     attempted: boolean;
-//     setAttempted: () => void;
-//     clickedOptionIndex: number;
-//     setClickedOptionIndex: () => void;
-// }
 
 interface MCQuestionProps {
     index: number;
     question: Question;
 }
-
-// const QuestionStateContext = createContext<QuestionState | null>(null);
 
 const MCQuestion: FC<MCQuestionProps> = ({ index, question }) => {
     const [attempted, setAttempted] = useState<boolean>(false);

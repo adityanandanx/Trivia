@@ -1,7 +1,4 @@
-import MCQuestion from "@/components/MCQuestion";
 import Questions from "@/components/Questions";
-import { useRouter } from "next/navigation";
-import { FC } from "react";
 
 interface RandomQuestionProps {}
 

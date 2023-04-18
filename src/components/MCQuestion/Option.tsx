@@ -28,15 +28,6 @@ const Option: FC<OptionProps> = ({
     const [state, setState] = useState("neutral");
     const { attempted, setAttempted } = attempt;
     const controls = useContext(ControlsContext);
-    const getState = (): "correct" | "wrong" | "neutral" => {
-        // if (!props.disabled) return "neutral";
-        if (isCorrect) {
-            return "correct";
-        } else if (!isCorrect) {
-            return "wrong";
-        }
-        return "neutral";
-    };
 
     const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
         if (!controls) return;
