@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import Settings from "@/components/ui/Settings";
 import { getCategories } from "@/lib/utils";
 import { Category } from "@/lib/types";
+import Image from "next/image";
 
 export default function Home() {
     const [settingsOpen, setSettingsOpen] = useState<boolean>(false);
@@ -28,14 +29,34 @@ export default function Home() {
             </Link>
 
             {/* <Link href="/settings" className="outline-none"> */}
-            <Button
-                onClick={() => setSettingsOpen(true)}
-                variant="secondary"
-                brightness="dim"
-                className="text-3xl absolute p-2 m-3 top-0 right-0"
-            >
-                <MdSettings />
-            </Button>
+
+            <div className="absolute top-0 right-0 flex items-center justify-center m-3 gap-3">
+                <Button
+                    onClick={() => setSettingsOpen(true)}
+                    variant="secondary"
+                    brightness="dim"
+                    className="text-3xl p-2"
+                >
+                    <MdSettings />
+                </Button>
+                <Link
+                    href="https://github.com/iMADi-ARCH/Trivia"
+                    target="_blank"
+                >
+                    <Button
+                        variant="secondary"
+                        brightness="dim"
+                        className="text-3xl p-2"
+                    >
+                        <Image
+                            src={"/github-mark-white.svg"}
+                            alt="github icon"
+                            width={28}
+                            height={28}
+                        />
+                    </Button>
+                </Link>
+            </div>
             {/* </Link> */}
             <Settings
                 categories={categories}
