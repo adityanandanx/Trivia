@@ -1,6 +1,7 @@
 import clsx, { ClassValue } from "clsx";
 import { twMerge } from "tailwind-merge";
-import { Category, Question, UserSettings } from "./types";
+import { Category, Difficulty, Question, UserSettings } from "./types";
+import queryString from "query-string";
 
 export function cn(...inputs: ClassValue[]) {
     return twMerge(clsx(inputs));
@@ -30,19 +31,40 @@ export async function getCategories() {
 
 export async function getQuestions(userSettings: UserSettings) {
     // https://opentdb.com/api.php?amount=10&category=9&difficulty=medium&type=multiple
-    const { category, difficulty, nofquestions, type } = userSettings;
-    const u = `https://opentdb.com/api.php?amount=${nofquestions}&type=${type.toLowerCase()}&difficulty=${difficulty.toLowerCase()}&category=${
-        category.id
-    }`;
-    console.log(u);
+    const { category, difficulty, nofquestions, type: qtype } = userSettings;
+    // const u = `https://opentdb.com/api.php?amount=${nofquestions}&type=${type.toLowerCase()}&difficulty=${difficulty.toLowerCase()}&category=${
+    //     category.id
+    // }`;
+
+    const u =
+        "https://opentdb.com/api.php?" +
+        queryString.stringify({
+            category: category.id === -1 ? null : category.id,
+            difficulty: difficulty,
+            amount: nofquestions,
+            type: qtype === "any" ? null : qtype,
+        });
+
+    // console.log(u);
 
     const res = await fetch(u, {
         cache: "no-store",
     });
-    if (!res.ok) {
-        console.log(res.statusText);
-    }
     const quesJson = await res.json();
+
+    // According to the api -
+    switch (quesJson.response_code) {
+        case 1:
+            throw Error("No Results");
+        case 2:
+            throw Error("Bad request");
+        case 3:
+            throw Error("Token not found");
+        case 4:
+            throw Error("Token Empty");
+        default:
+            break;
+    }
     const questions = quesJson.results as Question[];
 
     return questions;
