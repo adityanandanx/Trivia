@@ -35,7 +35,7 @@ const Settings: FC<SettingsProps> = ({
                     <form className="w-full flex flex-col gap-3">
                         <Field
                             id="amount"
-                            min={0}
+                            min={1}
                             max={50}
                             labelText="No. of questions"
                             defaultValue={userSettings.amount}
@@ -136,7 +136,7 @@ const Settings: FC<SettingsProps> = ({
                             Save Changes
                         </Button>
                     </form>
-                    <Dialog.Close asChild>
+                    <Dialog.Close>
                         <Button
                             variant="secondary"
                             brightness="dim"

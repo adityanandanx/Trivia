@@ -23,7 +23,7 @@ const Answers: FC<AnswersProps> = ({ questions, ...props }) => {
             </Dialog.Trigger>
             <Dialog.Portal>
                 <Dialog.Overlay className="grid place-items-center py-10 data-[state=open]:animate-overlayShow bg-zinc-900/50 fixed inset-0 overflow-y-auto">
-                    <Dialog.Content className="flex flex-col data-[state=open]:animate-contentShow w-[90vw] max-w-lg rounded-md bg-zinc-50 dark:bg-zinc-800 p-10 shadow-lg focus:outline-none">
+                    <Dialog.Content className="relative flex flex-col data-[state=open]:animate-contentShow w-[90vw] max-w-lg rounded-md bg-zinc-50 dark:bg-zinc-800 p-10 shadow-lg focus:outline-none">
                         <Dialog.Title className="text-2xl font-semibold">
                             Your Wrong Answers:
                         </Dialog.Title>
@@ -36,6 +36,15 @@ const Answers: FC<AnswersProps> = ({ questions, ...props }) => {
                                 />
                             ))}
                         </Dialog.Description>
+                        <Dialog.Close>
+                            <Button
+                                variant="secondary"
+                                brightness="dim"
+                                className="absolute top-0 right-0 p-5"
+                            >
+                                <MdClose />
+                            </Button>
+                        </Dialog.Close>
                     </Dialog.Content>
                 </Dialog.Overlay>
             </Dialog.Portal>

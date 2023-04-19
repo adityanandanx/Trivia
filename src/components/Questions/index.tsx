@@ -6,6 +6,7 @@ import Button from "../ui/Button";
 import { Question, QuestionType } from "@/lib/types";
 import { MdChevronLeft, MdClose } from "react-icons/md";
 import Answers from "./Answers";
+import Confetti from "react-confetti";
 
 interface QuestionsProps {
     questions: Question[];
@@ -122,8 +123,11 @@ const Questions: FC<QuestionsProps> = ({ questions, quesIndex = 0 }) => {
                                 Back to menu
                             </Button>
                         </Link>
-
-                        <Answers questions={questions} />
+                        {triviaState.score === questions.length ? (
+                            <Confetti recycle={false} numberOfPieces={500} />
+                        ) : (
+                            <Answers questions={questions} />
+                        )}
                     </h1>
                 )}
             </TriviaStateContext.Provider>

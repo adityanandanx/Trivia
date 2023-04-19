@@ -39,7 +39,11 @@ export default function Home() {
                 autoFocus
                 className="outline-none fixed inset-0"
             ></Link>
-            <Button variant="secondary" brightness="dim" className="px-10">
+            <Button
+                variant="secondary"
+                brightness="dim"
+                className="px-10 pointer-events-none"
+            >
                 Tap anywhere to start
             </Button>
             <div className="absolute top-0 right-0 flex items-center justify-center m-3 gap-3">
