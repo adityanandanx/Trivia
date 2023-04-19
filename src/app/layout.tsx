@@ -1,5 +1,7 @@
 import GlobalContextProvider from "@/components/GlobalContext";
 import "./globals.css";
+import Link from "next/link";
+import { AiTwotoneHeart } from "react-icons/ai";
 
 export const metadata = {
     title: "Trivia",
@@ -16,6 +18,14 @@ export default function RootLayout({
             <body className="relative w-full h-full min-h-screen bg-gradient-radial dark:to-zinc-900 dark:from-green-900 from-zinc-50 to-green-100 dark:text-zinc-50 text-zinc-900">
                 <main className="px-5 md:px-0 max-w-3xl mx-auto w-full h-full flex flex-col gap-3 justify-center items-center">
                     <GlobalContextProvider>{children}</GlobalContextProvider>
+                    <Link
+                        className="absolute text-center bottom-0 py-3 text-xs text-zinc-900 dark:text-zinc-50 hover:opacity-100 opacity-50 transition-opacity"
+                        href={"https://github.com/iMADi-ARCH"}
+                        target="_blank"
+                    >
+                        Made with <AiTwotoneHeart className="inline" />
+                        <br /> by Aditya Nandan
+                    </Link>
                 </main>
             </body>
         </html>
