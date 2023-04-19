@@ -23,7 +23,7 @@ export async function getCategories() {
     const catJson = await res.json();
     let categories = [];
     categories = [
-        { id: -1, name: "any" },
+        { id: -1, name: "mixed" },
         ...(catJson.trivia_categories as Category[]),
     ];
     return categories;
@@ -40,9 +40,9 @@ export async function getQuestions(userSettings: UserSettings) {
         "https://opentdb.com/api.php?" +
         queryString.stringify({
             category: category.id === -1 ? null : category.id,
-            difficulty: difficulty === "any" ? null : difficulty,
+            difficulty: difficulty === "mixed" ? null : difficulty,
             amount: amount,
-            type: qtype === "any" ? null : qtype,
+            type: qtype === "mixed" ? null : qtype,
         });
 
     const res = await fetch(u, {

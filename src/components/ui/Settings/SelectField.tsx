@@ -16,7 +16,7 @@ interface SelectFieldProps extends Select.SelectProps {
 const SelectField: FC<SelectFieldProps> = ({ items, ...props }) => {
     return (
         <Select.Root {...props}>
-            <Select.Trigger className="flex items-center justify-between gap-3 bg-zinc-200 dark:bg-zinc-700 px-5 py-2 rounded-md w-full flex-1">
+            <Select.Trigger className="capitalize flex items-center justify-between gap-3 bg-zinc-200 dark:bg-zinc-700 px-5 py-2 rounded-md w-full flex-1">
                 <Select.Value placeholder="Select a value" />
                 <Select.Icon>
                     <MdArrowDownward />
@@ -51,7 +51,7 @@ const SelectItem: FC<SelectItemProps> = React.forwardRef(
         return (
             <Select.Item
                 className={cn(
-                    `relative flex items-center gap-2 pl-7 text-sm py-1 my-0 rounded-md cursor-pointer hover:bg-zinc-200 dark:hover:bg-zinc-700 data-[disabled]:text-zinc-500 data-[disabled]:pointer-events-none data-[highlighted]:outline-none data-[highlighted]:bg-green-500 data-[highlighted]:text-white dark:data-[highlighted]:bg-green-500 dark:data-[highlighted]:text-white`,
+                    `capitalize relative flex items-center gap-2 pl-7 text-sm py-1 my-0 rounded-md cursor-pointer hover:bg-zinc-200 dark:hover:bg-zinc-700 data-[disabled]:text-zinc-500 data-[disabled]:pointer-events-none data-[highlighted]:outline-none data-[highlighted]:bg-green-500 data-[highlighted]:text-white dark:data-[highlighted]:bg-green-500 dark:data-[highlighted]:text-white`,
                     className
                 )}
                 {...props}

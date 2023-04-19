@@ -28,8 +28,6 @@ export default function Home() {
                 </Button>
             </Link>
 
-            {/* <Link href="/settings" className="outline-none"> */}
-
             <div className="absolute top-0 right-0 flex items-center justify-center m-3 gap-3">
                 <Button
                     onClick={() => setSettingsOpen(true)}
@@ -50,10 +48,10 @@ export default function Home() {
                     >
                         <Image
                             src={"/github-mark-white.svg"}
-                            className="filter invert dark:invert-0"
+                            className="filter invert dark:invert-0 w-7 h-auto"
                             alt="github icon"
-                            width={28}
-                            height={28}
+                            width={98}
+                            height={96}
                         />
                     </Button>
                 </Link>

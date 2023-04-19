@@ -18,7 +18,7 @@ interface ISettingsContext {
 const defaultUserSettings: UserSettings = {
     amount: 10,
     type: QuestionType.multiple,
-    category: { id: -1, name: "any" },
+    category: { id: -1, name: "mixed" },
     difficulty: Difficulty.medium,
 };
 
