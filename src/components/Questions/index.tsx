@@ -3,7 +3,6 @@ import { FC, createContext, useEffect, useRef, useState } from "react";
 import MCQuestion from "../Question";
 import Link from "next/link";
 import Button from "../ui/Button";
-import { useRouter } from "next/navigation";
 import { Question, QuestionType } from "@/lib/types";
 import { MdChevronLeft, MdClose } from "react-icons/md";
 
@@ -35,7 +34,6 @@ const Questions: FC<QuestionsProps> = ({ questions, quesIndex = 0 }) => {
         questions[quesIndex]
     );
     const [hasEnded, setHasEnded] = useState<boolean>(false);
-    const router = useRouter();
 
     // State of the game
     const [triviaState, setTriviaState] = useState<TriviaState>({
@@ -82,10 +80,6 @@ const Questions: FC<QuestionsProps> = ({ questions, quesIndex = 0 }) => {
                         className="text-3xl p-2 m-3 absolute top-0 right-0"
                         variant={"secondary"}
                         brightness={"dim"}
-                        onClick={() => {
-                            router.replace("/");
-                            router.refresh();
-                        }}
                     >
                         <MdClose />
                     </Button>
@@ -118,11 +112,8 @@ const Questions: FC<QuestionsProps> = ({ questions, quesIndex = 0 }) => {
                             <Button
                                 autoFocus
                                 variant="secondary"
-                                className="px-10 opacity-50 hover:opacity-100 transition-opacity"
-                                onClick={() => {
-                                    router.replace("/");
-                                    router.refresh();
-                                }}
+                                brightness="dim"
+                                className="px-10"
                             >
                                 Back to menu
                             </Button>

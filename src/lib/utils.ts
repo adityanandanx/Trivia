@@ -49,21 +49,27 @@ export async function getQuestions(userSettings: UserSettings) {
         cache: "no-store",
     });
     const quesJson = await res.json();
+    let error_msg: string | null = null;
 
     // According to the api -
     switch (quesJson.response_code) {
         case 1:
-            throw Error("No Results");
+            error_msg =
+                "No questions found with the applied settings. Try changing the parameters.";
+            break;
         case 2:
-            throw Error("Bad request");
+            error_msg = "Bad request";
+            break;
         case 3:
-            throw Error("Token not found");
+            error_msg = "Token not found";
+            break;
         case 4:
-            throw Error("Token Empty");
+            error_msg = "Token Empty";
+            break;
         default:
             break;
     }
     const questions = quesJson.results as Question[];
 
-    return questions;
+    return { error_msg, questions };
 }
