@@ -48,6 +48,10 @@ const Questions: FC<QuestionsProps> = ({ questions, quesIndex = 0 }) => {
             setTriviaState((prevState) => {
                 if (prevState.quesIndex >= questions.length - 1) {
                     prevState.hasEnded = true;
+                    localStorage.setItem(
+                        "highestScore",
+                        `${prevState.score}/${questions.length}`
+                    );
                     setHasEnded(true);
                     return prevState;
                 }

@@ -11,23 +11,37 @@ import Image from "next/image";
 export default function Home() {
     const [settingsOpen, setSettingsOpen] = useState<boolean>(false);
     const [categories, setCategories] = useState<Category[]>([]);
+    const [highestScore, setHighestScore] = useState<string | null>(null);
 
     useEffect(() => {
         getCategories().then((cats) => {
             setCategories(cats);
         });
+        const stored = localStorage.getItem("highestScore");
+        if (stored) {
+            setHighestScore(stored);
+        }
     }, []);
 
     return (
         <div className="flex flex-col items-center justify-center">
             <h1 className="text-7xl font-black">Trivia</h1>
 
-            <Link href="/random-question" autoFocus className="outline-none">
-                <Button variant="secondary" brightness="dim" className="px-10">
-                    Tap here to start
-                </Button>
-            </Link>
-
+            {/* highest score is like "5/10" so excluding "0/10" */}
+            {highestScore && highestScore[0] !== "0" ? (
+                <h3 className="flex gap-2 opacity-50 text-sm">
+                    Highest Score:
+                    <span>{highestScore}</span>
+                </h3>
+            ) : null}
+            <Link
+                href="/random-question"
+                autoFocus
+                className="outline-none fixed inset-0"
+            ></Link>
+            <Button variant="secondary" brightness="dim" className="px-10">
+                Tap anywhere to start
+            </Button>
             <div className="absolute top-0 right-0 flex items-center justify-center m-3 gap-3">
                 <Button
                     onClick={() => setSettingsOpen(true)}
