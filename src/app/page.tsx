@@ -28,12 +28,12 @@ export default function Home() {
             <h1 className="text-7xl font-black">Trivia</h1>
 
             {/* highest score is like "5/10" so excluding "0/10" */}
-            {highestScore && highestScore[0] !== "0" ? (
+            {/* {highestScore && highestScore[0] !== "0" ? (
                 <h3 className="flex gap-2 opacity-50 text-sm">
                     Highest Score:
                     <span>{highestScore}</span>
                 </h3>
-            ) : null}
+            ) : null} */}
             <Link
                 href="/random-question"
                 autoFocus
