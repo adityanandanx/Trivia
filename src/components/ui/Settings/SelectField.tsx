@@ -24,7 +24,7 @@ const SelectField: FC<SelectFieldProps> = ({ items, ...props }) => {
             </Select.Trigger>
 
             <Select.Portal>
-                <Select.Content className="overflow-hidden p-2 shadow-lg shadow-black  dark:bg-zinc-900 rounded-none">
+                <Select.Content className="overflow-hidden p-2 shadow-lg bg-white dark:bg-zinc-900 rounded-none">
                     <Select.ScrollUpButton>
                         <MdArrowUpward />
                     </Select.ScrollUpButton>
