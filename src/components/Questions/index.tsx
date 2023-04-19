@@ -92,11 +92,15 @@ const Questions: FC<QuestionsProps> = ({ questions, quesIndex = 0 }) => {
                 </Link>
                 {!hasEnded ? (
                     <div>
-                        <div className="w-full text-lg flex items-center justify-center gap-2">
-                            <h3>Score: </h3>
-                            <span>
+                        <div className="w-full text-lg text-zinc-500 flex flex-col sm:flex-row items-center justify-between gap-2 px-4 py-2">
+                            <div className="flex gap-2">
+                                <h3>Score: </h3>
                                 {triviaState.score}/{questions.length}
-                            </span>
+                            </div>
+                            <div className="flex gap-2">
+                                <h3>Questions left: </h3>
+                                {questions.length - triviaState.quesIndex}
+                            </div>
                         </div>
 
                         <MCQuestion
