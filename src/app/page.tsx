@@ -50,6 +50,7 @@ export default function Home() {
                     >
                         <Image
                             src={"/github-mark-white.svg"}
+                            className="filter invert dark:invert-0"
                             alt="github icon"
                             width={28}
                             height={28}
