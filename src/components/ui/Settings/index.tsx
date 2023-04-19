@@ -34,14 +34,14 @@ const Settings: FC<SettingsProps> = ({
 
                     <form className="w-full flex flex-col gap-3">
                         <Field
-                            id="nofquestions"
+                            id="amount"
                             min={0}
                             max={50}
                             labelText="No. of questions"
-                            defaultValue={userSettings.nofquestions}
+                            defaultValue={userSettings.amount}
                             onChange={(e) => {
                                 setUserSettings((prev) => {
-                                    prev.nofquestions = parseInt(
+                                    prev.amount = parseInt(
                                         e.currentTarget.value
                                     );
                                     return prev;

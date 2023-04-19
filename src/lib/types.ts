@@ -2,6 +2,7 @@ export enum Difficulty {
     easy = "easy",
     medium = "medium",
     hard = "hard",
+    any = "any",
 }
 
 export enum QuestionType {
@@ -25,7 +26,7 @@ export interface Category {
 }
 
 export interface UserSettings {
-    nofquestions: number;
+    amount: number;
     category: Category;
     type: QuestionType;
     difficulty: Difficulty;

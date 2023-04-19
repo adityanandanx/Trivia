@@ -31,7 +31,7 @@ export async function getCategories() {
 
 export async function getQuestions(userSettings: UserSettings) {
     // https://opentdb.com/api.php?amount=10&category=9&difficulty=medium&type=multiple
-    const { category, difficulty, nofquestions, type: qtype } = userSettings;
+    const { category, difficulty, amount, type: qtype } = userSettings;
     // const u = `https://opentdb.com/api.php?amount=${nofquestions}&type=${type.toLowerCase()}&difficulty=${difficulty.toLowerCase()}&category=${
     //     category.id
     // }`;
@@ -40,12 +40,10 @@ export async function getQuestions(userSettings: UserSettings) {
         "https://opentdb.com/api.php?" +
         queryString.stringify({
             category: category.id === -1 ? null : category.id,
-            difficulty: difficulty,
-            amount: nofquestions,
+            difficulty: difficulty === "any" ? null : difficulty,
+            amount: amount,
             type: qtype === "any" ? null : qtype,
         });
-
-    // console.log(u);
 
     const res = await fetch(u, {
         cache: "no-store",
