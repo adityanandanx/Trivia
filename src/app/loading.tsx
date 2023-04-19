@@ -20,7 +20,7 @@ const Loading: FC<LoadingProps> = ({}) => {
     ];
 
     return (
-        <div className="flex flex-col items-center gap-3">
+        <div className="flex flex-col items-center gap-3 animate-pulse">
             {shuffle(loadingPhrases)[0]} <Spinner />
         </div>
     );

@@ -86,7 +86,7 @@ const Questions: FC<QuestionsProps> = ({ questions, quesIndex = 0 }) => {
                 </Link>
                 {!hasEnded ? (
                     <div>
-                        <div className="w-full text-lg text-zinc-500 flex flex-col sm:flex-row items-center justify-between gap-2 px-4 py-2">
+                        <div className="w-full text-lg text-zinc-900 dark:text-zinc-50 opacity-50 flex flex-col sm:flex-row items-center justify-between gap-2 px-4 py-2">
                             <div className="flex gap-2">
                                 <h3>Score: </h3>
                                 {triviaState.score}/{questions.length}
