@@ -13,7 +13,7 @@ export default function RootLayout({
 }) {
     return (
         <html className="w-full h-full" lang="en">
-            <body className="relative w-full h-full min-h-screen bg-gradient-radial dark:to-zinc-900 dark:from-green-900 bg-zinc-50 dark:text-zinc-50 text-zinc-900">
+            <body className="relative w-full h-full min-h-screen bg-gradient-radial dark:to-zinc-900 dark:from-green-900 from-zinc-50 to-green-100 dark:text-zinc-50 text-zinc-900">
                 <main className="px-5 md:px-0 max-w-3xl mx-auto w-full h-full flex flex-col gap-3 justify-center items-center">
                     <GlobalContextProvider>{children}</GlobalContextProvider>
                 </main>
