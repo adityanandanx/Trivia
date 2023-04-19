@@ -25,7 +25,7 @@ const SelectField: FC<SelectFieldProps> = ({ items, ...props }) => {
 
             <Select.Portal>
                 <Select.Content className="overflow-hidden p-2 shadow-lg bg-white dark:bg-zinc-900 rounded-none">
-                    <Select.ScrollUpButton>
+                    <Select.ScrollUpButton className="flex justify-center items-center bg-zinc-200 dark:bg-zinc-700 py-1 rounded-md">
                         <MdArrowUpward />
                     </Select.ScrollUpButton>
                     <Select.Viewport>
@@ -35,7 +35,7 @@ const SelectField: FC<SelectFieldProps> = ({ items, ...props }) => {
                             </SelectItem>
                         ))}
                     </Select.Viewport>
-                    <Select.ScrollDownButton>
+                    <Select.ScrollDownButton className="flex justify-center items-center bg-zinc-200 dark:bg-zinc-700 py-1 rounded-md">
                         <MdArrowDownward />
                     </Select.ScrollDownButton>
                 </Select.Content>

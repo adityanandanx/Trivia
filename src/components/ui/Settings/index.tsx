@@ -24,7 +24,7 @@ const Settings: FC<SettingsProps> = ({
         <Dialog.Root open={open} onOpenChange={onOpenChange} {...props}>
             <Dialog.Portal>
                 <Dialog.Overlay className="data-[state=open]:animate-overlayShow bg-zinc-900/50 fixed inset-0" />
-                <Dialog.Content className="flex flex-col data-[state=open]:animate-contentShow fixed top-1/2 left-1/2 max-h-[85vh] w-[90vw] max-w-md -translate-x-1/2 -translate-y-1/2 rounded-md bg-zinc-50 dark:bg-zinc-800 p-10 shadow-lg focus:outline-none">
+                <Dialog.Content className="flex flex-col data-[state=open]:animate-contentShow fixed top-1/2 left-1/2 max-h-[85vh] w-[90vw] max-w-lg -translate-x-1/2 -translate-y-1/2 rounded-md bg-zinc-50 dark:bg-zinc-800 p-10 shadow-lg focus:outline-none">
                     <Dialog.Title className="text-2xl font-semibold">
                         Settings
                     </Dialog.Title>
