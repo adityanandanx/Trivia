@@ -5,6 +5,7 @@ import Link from "next/link";
 import Button from "../ui/Button";
 import { Question, QuestionType } from "@/lib/types";
 import { MdChevronLeft, MdClose } from "react-icons/md";
+import Answers from "./Answers";
 
 interface QuestionsProps {
     questions: Question[];
@@ -20,9 +21,8 @@ export interface Controls {
 export interface TriviaState {
     quesIndex: number;
     score: number;
-    rights: number;
-    wrongs: number;
     hasEnded: boolean;
+    correctQuestions: boolean[];
 }
 
 const ControlsContext = createContext<Controls | null>(null);
@@ -39,9 +39,8 @@ const Questions: FC<QuestionsProps> = ({ questions, quesIndex = 0 }) => {
     const [triviaState, setTriviaState] = useState<TriviaState>({
         quesIndex: quesIndex,
         score: 0,
-        rights: 0,
-        wrongs: 0,
         hasEnded: false,
+        correctQuestions: new Array(questions.length).fill(false),
     });
     // controls
     const [controls, setControls] = useState<Controls>({
@@ -67,6 +66,7 @@ const Questions: FC<QuestionsProps> = ({ questions, quesIndex = 0 }) => {
         incrementScore: () => {
             setTriviaState((prevState) => {
                 prevState.score += 1;
+                prevState.correctQuestions[prevState.quesIndex] = true;
                 return prevState;
             });
         },
@@ -118,6 +118,8 @@ const Questions: FC<QuestionsProps> = ({ questions, quesIndex = 0 }) => {
                                 Back to menu
                             </Button>
                         </Link>
+
+                        <Answers questions={questions} />
                     </h1>
                 )}
             </TriviaStateContext.Provider>

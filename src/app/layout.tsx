@@ -19,7 +19,7 @@ export default function RootLayout({
             <body className="relative w-full h-full min-h-screen bg-gradient-radial dark:to-zinc-900 dark:from-green-900 from-zinc-50 to-green-100 dark:text-zinc-50 text-zinc-900">
                 <Image
                     className="w-full h-full absolute inset-0 object-cover -z-10 filter mix-blend-lighten opacity-30"
-                    src="/grain2.jpg"
+                    src="/grain.webp"
                     width={1920 / 2}
                     height={1163 / 2}
                     alt="grain texture"

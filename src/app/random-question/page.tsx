@@ -7,9 +7,9 @@ import { getQuestions } from "@/lib/utils";
 import Link from "next/link";
 import { useContext } from "react";
 
-interface RandomQuestionProps {}
+// interface RandomQuestionProps {}
 
-const RandomQuestion = async ({}: RandomQuestionProps) => {
+const RandomQuestion = async () => {
     const { userSettings } = useContext(SettingsContext);
     const { error_msg, questions } = await getQuestions(userSettings);
     // const router = useRouter();
