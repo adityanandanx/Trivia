@@ -23,7 +23,8 @@ export default function RootLayout({
                         href={"https://github.com/iMADi-ARCH"}
                         target="_blank"
                     >
-                        Made with <AiTwotoneHeart className="inline" />
+                        Made with{" "}
+                        <AiTwotoneHeart className="inline animate-lubDub text-red-500" />
                         <br /> by Aditya Nandan
                     </Link>
                 </main>
