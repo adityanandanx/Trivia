@@ -35,6 +35,8 @@ const Settings: FC<SettingsProps> = ({
                     <form className="w-full flex flex-col gap-3">
                         <Field
                             id="nofquestions"
+                            min={0}
+                            max={50}
                             labelText="No. of questions"
                             defaultValue={userSettings.nofquestions}
                             onChange={(e) => {
