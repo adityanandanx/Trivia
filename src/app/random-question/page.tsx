@@ -23,7 +23,8 @@ const RandomQuestion = async ({}: RandomQuestionProps) => {
                         <Button
                             autoFocus
                             variant="primary"
-                            className="px-10 opacity-50"
+                            brightness="dim"
+                            className="px-10"
                         >
                             Back to menu
                         </Button>

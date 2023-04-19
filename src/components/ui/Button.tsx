@@ -12,7 +12,7 @@ const ButtonVariants = cva(
                 secondary: "text-zinc-900 dark:text-zinc-50 bg-transparent",
             },
             brightness: {
-                dim: "opacity-50 hover:opacity-100 transition-opacity",
+                dim: "opacity-50 hover:opacity-100 focus:opacity-100 transition-opacity",
                 default: "opacity-100",
             },
         },
