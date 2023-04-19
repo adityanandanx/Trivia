@@ -1,6 +1,13 @@
 "use client";
 import { Difficulty, QuestionType, UserSettings } from "@/lib/types";
-import { Dispatch, FC, SetStateAction, createContext, useState } from "react";
+import {
+    Dispatch,
+    FC,
+    SetStateAction,
+    createContext,
+    useEffect,
+    useState,
+} from "react";
 // import { UserSettings } from "@/lib/types.d";
 
 interface ISettingsContext {
@@ -11,7 +18,7 @@ interface ISettingsContext {
 const defaultUserSettings: UserSettings = {
     nofquestions: 10,
     type: QuestionType.multiple,
-    category: { id: 9, name: "Some" },
+    category: { id: -1, name: "any" },
     difficulty: Difficulty.medium,
 };
 
@@ -29,6 +36,13 @@ const GlobalContextProvider: FC<GlobalContextProviderProps> = ({
 }) => {
     const [userSettings, setUserSettings] =
         useState<UserSettings>(defaultUserSettings);
+
+    useEffect(() => {
+        const storedSettings = localStorage.getItem("userSettings");
+        if (storedSettings) {
+            setUserSettings(JSON.parse(storedSettings));
+        }
+    }, []);
 
     return (
         <SettingsContext.Provider value={{ userSettings, setUserSettings }}>

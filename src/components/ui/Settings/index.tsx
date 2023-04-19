@@ -19,8 +19,6 @@ const Settings: FC<SettingsProps> = ({
     ...props
 }) => {
     const { userSettings, setUserSettings } = useContext(SettingsContext);
-    const [tempUserSettings, setTempUserSettings] =
-        useState<UserSettings>(userSettings);
 
     return (
         <Dialog.Root open={open} onOpenChange={onOpenChange} {...props}>
@@ -39,6 +37,14 @@ const Settings: FC<SettingsProps> = ({
                             id="nofquestions"
                             labelText="No. of questions"
                             defaultValue={userSettings.nofquestions}
+                            onChange={(e) => {
+                                setUserSettings((prev) => {
+                                    prev.nofquestions = parseInt(
+                                        e.currentTarget.value
+                                    );
+                                    return prev;
+                                });
+                            }}
                             type="number"
                         />
                         <Field
@@ -47,6 +53,12 @@ const Settings: FC<SettingsProps> = ({
                             InputElement={
                                 <SelectField
                                     defaultValue={userSettings.difficulty}
+                                    onValueChange={(e) => {
+                                        setUserSettings((prev) => {
+                                            prev.difficulty = e as Difficulty;
+                                            return prev;
+                                        });
+                                    }}
                                     items={Object.values(Difficulty).map(
                                         (d) => {
                                             return {
@@ -64,6 +76,15 @@ const Settings: FC<SettingsProps> = ({
                             InputElement={
                                 <SelectField
                                     defaultValue={userSettings.category.id.toString()}
+                                    onValueChange={(e) => {
+                                        setUserSettings((prev) => {
+                                            prev.category = {
+                                                id: parseInt(e),
+                                                name: `changed${e}`,
+                                            };
+                                            return prev;
+                                        });
+                                    }}
                                     items={categories.map((cat) => {
                                         return {
                                             value: cat.id.toString(),
@@ -79,6 +100,12 @@ const Settings: FC<SettingsProps> = ({
                             InputElement={
                                 <SelectField
                                     defaultValue={userSettings.type}
+                                    onValueChange={(e) => {
+                                        setUserSettings((prev) => {
+                                            prev.type = e as QuestionType;
+                                            return prev;
+                                        });
+                                    }}
                                     items={Object.values(QuestionType).map(
                                         (d) => {
                                             return {
@@ -95,6 +122,10 @@ const Settings: FC<SettingsProps> = ({
                             onClick={(e) => {
                                 if (!onOpenChange || !open) return;
                                 e.preventDefault();
+                                localStorage.setItem(
+                                    "userSettings",
+                                    JSON.stringify(userSettings)
+                                );
                                 onOpenChange(false);
                             }}
                             type="submit"

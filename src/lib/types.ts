@@ -1,13 +1,13 @@
 export enum Difficulty {
-    easy = "Easy",
-    medium = "Medium",
-    hard = "Hard",
+    easy = "easy",
+    medium = "medium",
+    hard = "hard",
 }
 
 export enum QuestionType {
-    multiple = "Multiple",
-    boolean = "True/False",
-    any = "Any",
+    multiple = "multiple",
+    boolean = "boolean",
+    any = "any",
 }
 
 export interface Question {

@@ -56,7 +56,6 @@ const Questions: FC<QuestionsProps> = ({ questions, quesIndex = 0 }) => {
                 }
                 prevState.quesIndex += 1;
                 setCurrentQues(questions[prevState.quesIndex]);
-                // console.log(prevState.quesIndex);
 
                 return prevState;
             });
