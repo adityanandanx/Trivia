@@ -4,6 +4,7 @@ import Option from "./Option";
 import { decode } from "he";
 import { shuffle } from "@/lib/utils";
 import { Question } from "@/lib/types";
+import DifficultyTag from "./DifficultyTag";
 
 interface MCQuestionProps {
     index: number;
@@ -42,6 +43,10 @@ const MCQuestion: FC<MCQuestionProps> = ({ index, question }) => {
                     </li>
                 ))}
             </ul>
+            <DifficultyTag
+                className="self-end"
+                difficulty={question.difficulty}
+            />
         </div>
     );
 };

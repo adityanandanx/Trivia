@@ -23,7 +23,7 @@ export async function getCategories() {
     const catJson = await res.json();
     let categories = [];
     categories = [
-        { id: -1, name: "Any" },
+        { id: -1, name: "any" },
         ...(catJson.trivia_categories as Category[]),
     ];
     return categories;
